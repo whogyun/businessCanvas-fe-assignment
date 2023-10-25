@@ -41,7 +41,13 @@ const IconButton = styled('button')`
   cursor: pointer;
 `
 
-export default function ResourceItem({ resource }: { resource: TResource }) {
+export default function ResourceItem({
+  resource,
+  onSelectResource,
+}: {
+  resource: TResource
+  onSelectResource: (item: TResource) => void
+}) {
   const inputRef = useRef(null)
 
   const [editMode, setEditMode] = useState(false)
@@ -77,7 +83,7 @@ export default function ResourceItem({ resource }: { resource: TResource }) {
       {editMode ? (
         <Input value={value} ref={inputRef} onBlur={handleBlur} onChange={handleInputChange} />
       ) : (
-        <Div>{value}</Div>
+        <Div onClick={() => onSelectResource(resource)}>{value}</Div>
       )}
 
       <Actions>

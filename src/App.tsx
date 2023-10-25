@@ -16,15 +16,24 @@ function App() {
     { type: 'url', data: 'https://www.robinwieruch.de/react-libraries/' },
     { type: 'url', data: 'https://typed.do/blog-kr/how-to-make-good-usability-product/' },
   ])
+  const [selectedResource, setSelectedResource] = useState<TResource>()
 
   const handleAddResources = useCallback((type: 'url' | 'image', data: string | File) => {
     setResources(curr => [...curr, { type, data }])
   }, [])
 
+  const handleSelectResource = useCallback((item: TResource) => {
+    setSelectedResource(item)
+  }, [])
+
   return (
     <Container>
-      <SideResourceList resources={resources} onResourceAdd={handleAddResources} />
-      <ResourceViewer />
+      <SideResourceList
+        resources={resources}
+        onResourceAdd={handleAddResources}
+        onSelectResource={handleSelectResource}
+      />
+      <ResourceViewer selectedResource={selectedResource} />
     </Container>
   )
 }

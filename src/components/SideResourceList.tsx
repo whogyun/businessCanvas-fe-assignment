@@ -85,9 +85,11 @@ const AddUrlFieldWrapper = styled('div')`
 function SideResourceList({
   resources,
   onResourceAdd,
+  onSelectResource
 }: {
   resources: TResource[]
-  onResourceAdd: (type: 'url' | 'image', data: string | File) => void
+  onResourceAdd: (type: 'url' | 'image', data: string | File) => void;
+  onSelectResource: (item: TResource) => void
 }) {
   const inputRef = useRef(null)
 
@@ -160,7 +162,7 @@ function SideResourceList({
         {resources.length < 1 ? (
           <span>리소스가 없습니다.</span>
         ) : (
-          resources.map((item, idx) => <ResourceItem key={idx} resource={item} />)
+          resources.map((item, idx) => <ResourceItem key={idx} resource={item} onSelectResource={onSelectResource}/>)
         )}
       </ResourcesContainer>
     </Wrapper>
