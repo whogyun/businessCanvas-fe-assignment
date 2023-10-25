@@ -2,7 +2,9 @@ import { useState, useCallback, useRef, useEffect, ChangeEvent } from 'react'
 import { styled } from 'styled-components'
 import { TypedIcon } from 'typed-design-system'
 
-import { TResource } from '../modules/resourceSlice'
+import { TResource } from '../types/resource'
+
+import { Input } from './common'
 
 const Card = styled('div')`
   height: 90px;
@@ -21,18 +23,6 @@ const Actions = styled('div')`
   }
 `
 
-const Input = styled('input')`
-  width: 100%;
-  height: 30px;
-  font-size: inherit;
-  border-radius: 3px;
-  &:focus {
-    background-color: #f7f7f7;
-  }
-  &:focus-visible {
-    outline-color: #38a5e1;
-  }
-`
 const Div = styled('div')`
   width: 100%;
   height: 2rem;
