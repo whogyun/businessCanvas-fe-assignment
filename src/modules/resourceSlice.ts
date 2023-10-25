@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store'
 
-type TResource = { type: 'url'; data: string } | { type: 'image'; data: File }
+export type TResource = { type: 'url'; data: string } | { type: 'image'; data: File }
 
 interface ResourceState {
   resources: TResource[]
